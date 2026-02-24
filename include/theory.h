@@ -28,5 +28,7 @@ void registry_add(StringRegistry *reg, const char *raw_text);
 
 /* Mathematical operations */
 TString theory_concat(TString u, TString v);
+TString theory_reverse(TString u);
+TString theory_power(TString u, int n);
 
 #endif

@@ -65,6 +65,29 @@ int main() {
                 }
                 break;
             }
+
+            case 2: { // Power
+                int idx = ui_get_int("Indice de la cadena: ");
+                int n = ui_get_int("Ingrese la potencia (n): ");
+
+                if (idx >= 0 && idx < my_registry.size) {
+                    TString result = theory_power(my_registry.items[idx], n);
+                    
+                    printf(CLR_ACCENT "\nResultado de la operacion: " CLR_RESET);
+                    if (result.length == 0) {
+                        printf("(epsilon / cadena vacia)\n");
+                    } else {
+                        printf("\"%s\"\n", result.data);
+                    }
+
+                    registry_add(&my_registry, result.data);
+                    ui_print_success("Operacion guardada en el registro.");
+                } else {
+                    ui_print_error("Indice invalido.");
+                }
+                break;
+            }
+
             default:
                 ui_print_error("Esta operacion aun no ha sido implementada.");
                 break;
