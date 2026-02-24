@@ -1,0 +1,13 @@
+# Binaries and objects
+bin/
+*.o
+*.out
+*.exe
+
+# VS Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# OS files
+.DS_Store
