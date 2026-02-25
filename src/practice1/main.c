@@ -89,31 +89,31 @@ int main() {
             }
 
             case 4: {
-                int idx = ui_get_int('Indice de la cadena: ');
+                int idx = ui_get_int("Indice de la cadena: ");
                 if (idx >= 0 && idx < my_registry.size) {
                     theory_print_prefixes(my_registry.items[idx]);
                 } else {
-                    ui_print_error('Indice invalido.');
+                    ui_print_error("Indice invalido.");
                 }
                 break;
             }
 
             case 5: {
-                int idx = ui_get_int('Indice de la cadena: ');
+                int idx = ui_get_int("Indice de la cadena: ");
                 if (idx >= 0 && idx < my_registry.size) {
                     theory_print_suffixes(my_registry.items[idx]);
                 } else {
-                    ui_print_error('Indice invalido.');
+                    ui_print_error("Indice invalido.");
                 }
                 break;
             }
 
             case 6: {
-                int idx = ui_get_int('Indice de la cadena: ');
+                int idx = ui_get_int("Indice de la cadena: ");
                 if (idx >= 0 && idx < my_registry.size) {
                     theory_print_substrings(my_registry.items[idx]);
                 } else {
-                    ui_print_error('Indice invalido.');
+                    ui_print_error("Indice invalido.");
                 }
                 break;
             }
