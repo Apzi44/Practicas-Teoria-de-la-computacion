@@ -88,6 +88,18 @@ int main() {
                 break;
             }
 
+            case 3: {
+                int idx = ui_get_int("Indice de la cadena: ");
+                if (idx >= 0 && idx < my_registry.size) {
+                    printf("\nLa longitud de la cadena \"%s\" es: %d\n",
+                           my_registry.items[idx].data,
+                           my_registry.items[idx].length);
+                } else {
+                    ui_print_error("Indice invalido.");
+                }
+                break;
+            }
+
             case 4: {
                 int idx = ui_get_int("Indice de la cadena: ");
                 if (idx >= 0 && idx < my_registry.size) {
@@ -114,6 +126,14 @@ int main() {
                     theory_print_substrings(my_registry.items[idx]);
                 } else {
                     ui_print_error("Indice invalido.");
+                }
+                break;
+            }
+
+            case 7: {
+                int idx = ui_get_int("Indice de la cadena: ");
+                if (idx >= 0 && idx < my_registry.size) {
+                    theory_print_subsequences(my_registry.items[idx]);
                 }
                 break;
             }

@@ -88,3 +88,23 @@ void theory_print_substrings(TString u) {
         }
     }
 }
+
+void theory_print_subsequences(TString u) {
+    if (u.length > 12) {
+        printf("\n[!] Error: La cadena es muy larga para generar todas sus subsecuencias.\n");
+        return;
+    }
+    printf("\nSubsecuencias de la cadena \"%s\":\n", u.data);
+    printf(" - (epsilon)\n");
+
+    int total_subsequences = 1 << u.length;
+    for(int i = 1; i < total_subsequences; i++) {
+        printf(" - ");
+        for(int j = 0; j < u.length; j++) {
+            if(i & (1 << j)) {
+                printf("%c", u.data[j]);
+            }
+        }
+        printf("\n");
+    }
+}

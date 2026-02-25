@@ -33,4 +33,5 @@ TString theory_power(TString u, int n);
 void theory_print_prefixes(TString u);
 void theory_print_suffixes(TString u);
 void theory_print_substrings(TString u);
+void theory_print_subsequences(TString u);
 #endif
