@@ -42,6 +42,7 @@ int ui_display_menu(const char *title, const char *options[], int count) {
 int ui_get_int(const char *prompt) {
     int value;
     printf("%s", prompt);
+    fflush(stdout);
     while (scanf("%d", &value) != 1) {
         ui_print_error("Entrada invalida. Ingrese un numero.");
         while (getchar() != '\n'); // Clear buffer

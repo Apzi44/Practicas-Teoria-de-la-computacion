@@ -59,3 +59,32 @@ TString theory_power(TString u, int n) {
     }
     return result;
 }
+
+void theory_print_prefixes(TString u) {
+    printf('\nPrefijos de la cadena \'%s\':\n', u.data);
+    printf(' - (epsilon)\n');
+
+    for(int i = 1; i <= u.length; i++) {
+        printf(' - %.*s\n', i, u.data);
+    }
+}
+
+void theory_print_suffixes(TString u) {
+    printf('\nSufijos de la cadena \'%s\':\n', u.data);
+    printf(' - (epsilon)\n');
+
+    for(int i = u.length - 1; i >= 0; i--) {
+        printf(' - %s\n', u.data + i);
+    }
+}
+
+void theory_print_substrings(TString u) {
+    printf('\nSubcadenas de la cadena \'%s\':\n', u.data);
+    printf(' - (epsilon)\n');
+
+    for(int len = 1; len <= u.length; len++) {
+        for(int start = 0; start <= u.length - len; start++) {
+            printf(' - %.*s\n', len, u.data + start);
+        }
+    }
+}

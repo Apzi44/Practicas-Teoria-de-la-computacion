@@ -30,5 +30,7 @@ void registry_add(StringRegistry *reg, const char *raw_text);
 TString theory_concat(TString u, TString v);
 TString theory_reverse(TString u);
 TString theory_power(TString u, int n);
-
+void theory_print_prefixes(TString u);
+void theory_print_suffixes(TString u);
+void theory_print_substrings(TString u);
 #endif
