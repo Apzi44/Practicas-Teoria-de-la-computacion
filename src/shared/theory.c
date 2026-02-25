@@ -5,7 +5,6 @@
 void print_alphabet(Alphabet sigma) {
     printf("Sigma = {");
     for (int i = 0; i < sigma.size; i++) {
-        // Only add a comma if it's not the last element
         printf("%c%s", sigma.symbols[i], (i < sigma.size - 1) ? ", " : "");
     }
     printf("}\n");
@@ -13,7 +12,6 @@ void print_alphabet(Alphabet sigma) {
 
 void registry_add(StringRegistry *reg, const char *raw_text) {
     if (reg->size < MAX_REGISTRY_SIZE) {
-        // Use strncpy to prevent overflows
         strncpy(reg->items[reg->size].data, raw_text, MAX_STR_LEN - 1);
         reg->items[reg->size].data[MAX_STR_LEN - 1] = '\0';
         reg->items[reg->size].length = strlen(reg->items[reg->size].data);
@@ -43,18 +41,17 @@ TString theory_power(TString u, int n) {
     result.data[0] = '\0';
     result.length = 0;
 
-    if (n == 0) return result; // Returns empty string (epsilon)
+    if (n == 0) return result;
 
     TString base = (n < 0) ? theory_reverse(u) : u;
     int abs_n = (n < 0) ? -n : n;
 
     for (int i = 0; i < abs_n; i++) {
-        // Check if adding another 'base' exceeds our buffer
         if (result.length + base.length < MAX_STR_LEN) {
             strcat(result.data, base.data);
             result.length += base.length;
         } else {
-            break; // Truncate if it exceeds MAX_STR_LEN
+            break;
         }
     }
     return result;
@@ -89,22 +86,30 @@ void theory_print_substrings(TString u) {
     }
 }
 
+void generate_subsequences(char *original, int index, char *current, int curr_len, int total_len) {
+    if (index == total_len) {
+        current[curr_len] = '\0';
+        if (curr_len > 0) {
+            printf(" - %s\n", current);
+        }
+        return;
+    }
+
+    generate_subsequences(original, index + 1, current, curr_len, total_len);
+
+    current[curr_len] = original[index];
+    generate_subsequences(original, index + 1, current, curr_len + 1, total_len);
+}
+
 void theory_print_subsequences(TString u) {
     if (u.length > 12) {
         printf("\n[!] Error: La cadena es muy larga para generar todas sus subsecuencias.\n");
         return;
     }
+    
     printf("\nSubsecuencias de la cadena \"%s\":\n", u.data);
     printf(" - (epsilon)\n");
-
-    int total_subsequences = 1 << u.length;
-    for(int i = 1; i < total_subsequences; i++) {
-        printf(" - ");
-        for(int j = 0; j < u.length; j++) {
-            if(i & (1 << j)) {
-                printf("%c", u.data[j]);
-            }
-        }
-        printf("\n");
-    }
+    
+    char temp[MAX_STR_LEN];
+    generate_subsequences(u.data, 0, temp, 0, u.length);
 }

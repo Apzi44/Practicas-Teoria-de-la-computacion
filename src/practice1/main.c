@@ -3,7 +3,6 @@
 #include "theory.h"
 #include "ui.h"
 
-/* Helper to display the registry contents using the UI style */
 void display_current_registry(StringRegistry *reg) {
     printf(CLR_ACCENT "\n--- Registro de Cadenas Disponibles ---" CLR_RESET "\n");
     if (reg->size == 0) {
@@ -17,7 +16,6 @@ void display_current_registry(StringRegistry *reg) {
 }
 
 int main() {
-    // Initializing the registry object
     StringRegistry my_registry = { .size = 0 };
     char buffer[MAX_STR_LEN];
     
@@ -29,7 +27,6 @@ int main() {
     ui_clear_screen();
     ui_print_header("PRACTICA 1: ALFABETOS Y CADENAS");
 
-    /* Initial string collection */
     ui_get_string("Ingrese la primera cadena (A)", buffer, 50);
     registry_add(&my_registry, buffer);
 
@@ -45,14 +42,13 @@ int main() {
         
         choice = ui_display_menu("OPERACIONES DISPONIBLES", main_menu, 8);
         
-        // Exit case
         if (choice == 0) { 
           ui_print_success("Saliendo del programa..."); 
           break;
         }
 
         switch (choice) {
-            case 1: { // Concatenation
+            case 1: {
                 int idx1 = ui_get_int("Indice de la primera cadena: ");
                 int idx2 = ui_get_int("Indice de la segunda cadena: ");
 
@@ -66,7 +62,7 @@ int main() {
                 break;
             }
 
-            case 2: { // Power
+            case 2: {
                 int idx = ui_get_int("Indice de la cadena: ");
                 int n = ui_get_int("Ingrese la potencia (n): ");
 
