@@ -55,6 +55,9 @@ int main() {
                 if (idx1 >= 0 && idx1 < my_registry.size && idx2 >= 0 && idx2 < my_registry.size) {
                     TString result = theory_concat(my_registry.items[idx1], my_registry.items[idx2]);
                     registry_add(&my_registry, result.data);
+                    
+                    printf(CLR_ACCENT "\nResultado de la operacion: " CLR_RESET);
+                    printf("%s\n", result.data);
                     ui_print_success("Cadena concatenada con exito.");
                 } else {
                     ui_print_error("Uno o ambos indices son invalidos.");
